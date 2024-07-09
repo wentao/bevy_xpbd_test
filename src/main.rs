@@ -252,7 +252,6 @@ pub fn collide(
             t2.translation + t2.rotation * (sum.1 / count),
         );
 
-        // BUG: why point1 and point2 are far from each other?
         info!("collide at {:?} {:?}", point1, point2);
 
         for p in [point1, point2] {
