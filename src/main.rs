@@ -243,9 +243,13 @@ pub fn collide(
                 (acc.0 + point1, acc.1 + point2)
             });
         let count = contacts.manifolds.len() as f32;
+        let (t1, t2) = (
+            transform1.compute_transform(),
+            transform2.compute_transform(),
+        );
         let (point1, point2) = (
-            transform1.transform_point(sum.0 / count),
-            transform2.transform_point(sum.1 / count),
+            t1.translation + t1.rotation * (sum.0 / count),
+            t2.translation + t2.rotation * (sum.1 / count),
         );
 
         // BUG: why point1 and point2 are far from each other?
